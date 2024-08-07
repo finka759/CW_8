@@ -10,6 +10,11 @@ class Habit(models.Model):
         AUTH_USER_MODEL,
         on_delete=models.CASCADE,
         verbose_name="владелец",
+        **NULLABLE
+    )
+    action = models.CharField(
+        max_length=100,
+        verbose_name="действие"
     )
     place = models.CharField(
         max_length=100,
@@ -19,10 +24,6 @@ class Habit(models.Model):
     time = models.TimeField(
         verbose_name="время выполнения",
         ** NULLABLE
-    )
-    action = models.CharField(
-        max_length=100,
-        verbose_name="действие"
     )
     habit_is_pleasant = models.BooleanField(
         default=True,
