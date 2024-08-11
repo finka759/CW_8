@@ -122,42 +122,42 @@ class Command(BaseCommand):
                  "user": 2,
                  "connection_habit": 1, }
              },
-            # {'pk': 5, 'fields':
-            #     {"place": None,
-            #      "time": "21:37:00",
-            #      "action": "action_notplesant_habit_5",
-            #      "habit_is_pleasant": False,
-            #      "number_of_executions": 3,
-            #      "duration": "00:02:00",
-            #      "is_published": False,
-            #      "reward": None,
-            #      "user": 2,
-            #      "connection_habit": 2, }
-            #  },
-            # {'pk': 6, 'fields':
-            #     {"place": None,
-            #      "time": "21:38:00",
-            #      "action": "action_notplesant_habit_6",
-            #      "habit_is_pleasant": False,
-            #      "number_of_executions": 7,
-            #      "duration": "00:02:00",
-            #      "is_published": True,
-            #      "reward": None,
-            #      "user": 3,
-            #      "connection_habit": 3, }
-            #  },
-            # {'pk': 7, 'fields':
-            #     {"place": None,
-            #      "time": "21:39:00",
-            #      "action": "action_notplesant_habit_7",
-            #      "habit_is_pleasant": False,
-            #      "number_of_executions": 3,
-            #      "duration": "00:02:00",
-            #      "is_published": False,
-            #      "reward": "reward_7",
-            #      "user": 2,
-            #      "connection_habit": 2, }
-            #  },
+            {'pk': 5, 'fields':
+                {"place": None,
+                 "time": "21:37:00",
+                 "action": "action_notplesant_habit_5",
+                 "habit_is_pleasant": False,
+                 "number_of_executions": 3,
+                 "duration": "00:02:00",
+                 "is_published": False,
+                 "reward": None,
+                 "user": 2,
+                 "connection_habit": 2, }
+             },
+            {'pk': 6, 'fields':
+                {"place": None,
+                 "time": "21:38:00",
+                 "action": "action_notplesant_habit_6",
+                 "habit_is_pleasant": False,
+                 "number_of_executions": 7,
+                 "duration": "00:02:00",
+                 "is_published": True,
+                 "reward": None,
+                 "user": 3,
+                 "connection_habit": 3, }
+             },
+            {'pk': 7, 'fields':
+                {"place": None,
+                 "time": "21:39:00",
+                 "action": "action_notplesant_habit_7",
+                 "habit_is_pleasant": False,
+                 "number_of_executions": 3,
+                 "duration": "00:02:00",
+                 "is_published": False,
+                 "reward": "reward_7",
+                 "user": 2,
+                 "connection_habit": 2, }
+             },
         ]
         habits_for_create2 = []
 

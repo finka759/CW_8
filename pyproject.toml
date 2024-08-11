@@ -17,6 +17,10 @@ eventlet = "^0.36.1"
 redis = "^5.0.8"
 django-celery-beat = "^2.6.0"
 requests = "^2.32.3"
+drf-yasg = "^1.21.7"
+setuptools = "^72.1.0"
+django-cors-headers = "^4.4.0"
+python-dotenv = "^1.0.1"
 
 
 [build-system]

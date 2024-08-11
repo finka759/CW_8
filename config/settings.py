@@ -2,11 +2,15 @@ import os
 from datetime import timedelta
 from pathlib import Path
 
+from dotenv import load_dotenv
+
+load_dotenv()
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-ed3*y_8p&f4jso4y#3he5n2&(w4_9soz%$ieacf$&29+z4^9od'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
-DEBUG = True
+DEBUG = (os.getenv('DEBUG', False) == 'True')
 
 ALLOWED_HOSTS = []
 
@@ -21,6 +25,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_simplejwt',
     'django_celery_beat',
+    'drf_yasg',
+    'corsheaders',
 
     'users',
     'habit',
@@ -35,6 +41,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -69,12 +77,12 @@ REST_FRAMEWORK = {
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'habit',
-        'USER': 'postgres',
-        'PASSWORD': '1616',
-        'HOST': '127.0.0.1',
-        'PORT': '5432'
+        'ENGINE': os.getenv('ENGINE'),
+        'NAME': os.getenv('NAME'),
+        'USER': os.getenv('USER'),
+        'PASSWORD': os.getenv('PASSWORD'),
+        'HOST': os.getenv('HOST'),
+        'PORT': os.getenv('PORT')
     }
 }
 
@@ -120,23 +128,29 @@ CELERY_TIMEZONE = TIME_ZONE
 CELERY_TASK_TRACK_STARTED = True
 CELERY_TASK_TIME_LIMIT = 30 * 60
 
-# os.getenv('CELERY_BROKER_URL')
-# os.getenv('CELERY_RESULT_BACKEND')
-CELERY_BROKER_URL = 'redis://localhost:6379'
-CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+CELERY_BROKER_URL = os.getenv('CELERY_BROKER_URL')
+CELERY_RESULT_BACKEND = os.getenv('CELERY_RESULT_BACKEND')
 
 CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
 
 CELERY_BEAT_SCHEDULE = {
     "task-name": {
-        "task": "habit.tasks.send_message_tg",  # Путь к задаче
+        "task": "habit.tasks.send_message_tg",
         "schedule": timedelta(
             minutes=1
-        ),  # Расписание выполнения задачи (например, каждые 10 минут)
+        ),
     },
 }
 
-# TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
-# TELEGRAM_URL = os.getenv("TELEGRAM_URL")
-TELEGRAM_TOKEN = '7249981108:AAHFAAqZs-ium0NO69zLGJutHFQpYQHvC-A'
-TELEGRAM_URL = 'https://api.telegram.org/bot'
+TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
+TELEGRAM_URL = os.getenv("TELEGRAM_URL")
+
+
+# CORS_ALLOWED_ORIGINS = [
+#     '<https://read-only.example.com>',
+#     "https://read-and-write.example.com",
+# ]
+#
+# CSRF_TRUSTED_ORIGINS = [
+#     "https://read-and-write.example.com",
+# ]
