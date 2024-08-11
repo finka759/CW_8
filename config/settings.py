@@ -19,6 +19,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'rest_framework',
+    'rest_framework_simplejwt',
+    'django_celery_beat',
+
     'users',
     'habit',
 
@@ -111,3 +114,29 @@ SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=500),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
 }
+
+# Celery Configuration Options
+CELERY_TIMEZONE = TIME_ZONE
+CELERY_TASK_TRACK_STARTED = True
+CELERY_TASK_TIME_LIMIT = 30 * 60
+
+# os.getenv('CELERY_BROKER_URL')
+# os.getenv('CELERY_RESULT_BACKEND')
+CELERY_BROKER_URL = 'redis://localhost:6379'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+
+CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
+
+CELERY_BEAT_SCHEDULE = {
+    "task-name": {
+        "task": "habit.tasks.send_message_tg",  # Путь к задаче
+        "schedule": timedelta(
+            minutes=1
+        ),  # Расписание выполнения задачи (например, каждые 10 минут)
+    },
+}
+
+# TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
+# TELEGRAM_URL = os.getenv("TELEGRAM_URL")
+TELEGRAM_TOKEN = '7249981108:AAHFAAqZs-ium0NO69zLGJutHFQpYQHvC-A'
+TELEGRAM_URL = 'https://api.telegram.org/bot'

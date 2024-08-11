@@ -36,7 +36,7 @@ class Habit(models.Model):
         **NULLABLE,
     )
     number_of_executions = models.IntegerField(
-        default=1,
+        default=7,
         verbose_name="количество выполнений в неделю"
     )
     duration = models.DurationField(

@@ -2,12 +2,12 @@ from rest_framework.generics import CreateAPIView, ListAPIView, UpdateAPIView, D
 from rest_framework.permissions import IsAuthenticated
 
 from habit.models import Habit
+from habit.paginations import CustomPagination
 from habit.serializers import HabitSerializer
 
 
 class HabitCreateApiView(CreateAPIView):
 
-    print('HabitCreateApiView')
     queryset = Habit.objects.all()
     serializer_class = HabitSerializer
     permission_classes = (IsAuthenticated,)
@@ -21,6 +21,7 @@ class HabitCreateApiView(CreateAPIView):
 class HabitListApiView(ListAPIView):
     queryset = Habit.objects.all()
     serializer_class = HabitSerializer
+    pagination_class = CustomPagination
 
     def get_queryset(self):
         user = self.request.user
@@ -31,6 +32,7 @@ class HabitListApiView(ListAPIView):
 class HabitPublishedListApiView(ListAPIView):
     queryset = Habit.objects.all()
     serializer_class = HabitSerializer
+    pagination_class = CustomPagination
 
     def get_queryset(self):
         user = self.request.user
