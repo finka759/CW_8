@@ -68,8 +68,6 @@ class FrequencyValidator:
     def __call__(self, habit):
         number_list = [1, 2, 3, 4, 5, 6, 7]
         num = habit.get("number_of_executions")
-        print('num')
-        print(num)
         if num not in number_list:
             raise ValidationError("Привычку нельзя выполнять реже 1 и чаще 7 раз в неделю")
 
