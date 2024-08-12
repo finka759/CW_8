@@ -3,6 +3,7 @@ from datetime import datetime
 from django.contrib.auth.hashers import make_password
 from django.core.management import BaseCommand
 
+from config.settings import TEST_CHAT_ID
 from habit.models import Habit
 from users.models import User
 
@@ -27,16 +28,16 @@ class Command(BaseCommand):
 
         user_list = [
             {'pk': 2, 'fields':
-                {'email': 'user2@sky.com', 'phone': '222222222', 'password': '222', 'chat_id': '6874635908'}
+                {'email': 'user2@sky.com', 'phone': '222222222', 'password': '222', 'chat_id': TEST_CHAT_ID}
              },
             {'pk': 3, 'fields':
-                {'email': 'user3@sky.com', 'phone': '333333333', 'password': '333', 'chat_id': '6874635908'}
+                {'email': 'user3@sky.com', 'phone': '333333333', 'password': '333', 'chat_id': TEST_CHAT_ID}
              },
             {'pk': 4, 'fields':
-                {'email': 'user4@sky.com', 'phone': '444444444', 'password': '444', 'chat_id': '6874635908'}
+                {'email': 'user4@sky.com', 'phone': '444444444', 'password': '444', 'chat_id': TEST_CHAT_ID}
              },
             {'pk': 5, 'fields':
-                {'email': 'user5@sky.com', 'phone': '555555555', 'password': '555', 'chat_id': '6874635908'}
+                {'email': 'user5@sky.com', 'phone': '555555555', 'password': '555', 'chat_id': TEST_CHAT_ID}
              },
         ]
         users_for_create = []

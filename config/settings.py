@@ -145,6 +145,8 @@ CELERY_BEAT_SCHEDULE = {
 TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
 TELEGRAM_URL = os.getenv("TELEGRAM_URL")
 
+TEST_CHAT_ID = os.getenv("TEST_CHAT_ID")
+
 
 # CORS_ALLOWED_ORIGINS = [
 #     '<https://read-only.example.com>',
