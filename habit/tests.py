@@ -48,11 +48,7 @@ class HabitTestCase(APITestCase):
 
     def test_habit_create(self):
         """Тестируем создание привычки."""
-
         url = reverse("habit:habit_create")
-        print('--url---')
-        print(url)
-
         data = {
             "action": "Ничего не делать",
             "number_of_executions": 5,
@@ -63,7 +59,6 @@ class HabitTestCase(APITestCase):
 
     def test_habit_update(self):
         """Тестируем изменение привычки."""
-
         url = reverse("habit:habit_update", args=(self.habit.pk,))
         data = {
             "reward": "Почесать за ухом",
@@ -75,7 +70,6 @@ class HabitTestCase(APITestCase):
 
     def test_habit_delete(self):
         """Тестируем удаление привычки."""
-
         url = reverse("habit:habit_delete", args=(self.habit.pk,))
         response = self.client.delete(url)
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)

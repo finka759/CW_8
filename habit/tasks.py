@@ -17,7 +17,6 @@ def send_message_tg():
 
     for habit in habits:
         if str(habit.time) == str(current_time_plus_5.strftime("%X")):
-            # if habit.is_published:
             chat_id = habit.user.chat_id
             if chat_id:
                 count = habit.number_of_executions
