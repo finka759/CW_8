@@ -11,6 +11,7 @@ class UserSerializer(ModelSerializer):
             'id',
             'email',
             'phone',
+            'password',
             'token',
             'chat_id',
             'last_login',
