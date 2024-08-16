@@ -148,11 +148,13 @@ TELEGRAM_URL = os.getenv("TELEGRAM_URL")
 TEST_CHAT_ID = os.getenv("TEST_CHAT_ID")
 
 
-# CORS_ALLOWED_ORIGINS = [
-#     '<https://read-only.example.com>',
-#     "https://read-and-write.example.com",
-# ]
-#
-# CSRF_TRUSTED_ORIGINS = [
-#     "https://read-and-write.example.com",
-# ]
+CORS_ALLOWED_ORIGINS = [
+    "https://read-only.example.com",
+    "https://read-and-write.example.com",
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://read-and-write.example.com",
+]
+
+# CORS_ALLOW_ALL_ORIGINS = False

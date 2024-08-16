@@ -3,11 +3,11 @@ from rest_framework.permissions import IsAuthenticated
 
 from habit.models import Habit
 from habit.paginations import CustomPagination
+from habit.permissions import IsCreator
 from habit.serializers import HabitSerializer
 
 
 class HabitCreateApiView(CreateAPIView):
-
     queryset = Habit.objects.all()
     serializer_class = HabitSerializer
     permission_classes = (IsAuthenticated,)
@@ -43,6 +43,9 @@ class HabitPublishedListApiView(ListAPIView):
 class HabitRetrieveApiView(RetrieveAPIView):
     queryset = Habit.objects.all()
     serializer_class = HabitSerializer
+    permission_classes = (
+        IsCreator,
+    )
 
     def get_queryset(self):
         user = self.request.user
@@ -53,6 +56,9 @@ class HabitRetrieveApiView(RetrieveAPIView):
 class HabitUpdateApiView(UpdateAPIView):
     queryset = Habit.objects.all()
     serializer_class = HabitSerializer
+    permission_classes = (
+        IsCreator,
+    )
 
     def get_queryset(self):
         user = self.request.user
@@ -63,6 +69,9 @@ class HabitUpdateApiView(UpdateAPIView):
 class HabitDestroyApiView(DestroyAPIView):
     queryset = Habit.objects.all()
     serializer_class = HabitSerializer
+    permission_classes = (
+        IsCreator,
+    )
 
     def get_queryset(self):
         user = self.request.user
